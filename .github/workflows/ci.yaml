@@ -51,9 +51,9 @@ jobs:
         working-directory: app
         run: |
           docker build -t demo-api:${{ github.sha }} .
-          
+
       - name: Trivy container scan
-        uses: aquasecurity/trivy-action@0.33.1
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: demo-api:${{ github.sha }}
           severity: CRITICAL,HIGH
