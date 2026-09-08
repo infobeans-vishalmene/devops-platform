@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: devops-platform
+  repository: ghcr.io/infobeans-vishalmene/devops-platform
   tag: "latest"
   pullPolicy: IfNotPresent
 

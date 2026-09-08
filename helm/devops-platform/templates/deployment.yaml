@@ -4,23 +4,32 @@ metadata:
   name: {{ include "devops-platform.fullname" . }}
   labels:
     {{- include "devops-platform.labels" . | nindent 4 }}
+
 spec:
   replicas: {{ .Values.replicaCount }}
+
   selector:
     matchLabels:
       {{- include "devops-platform.selectorLabels" . | nindent 6 }}
+
   template:
     metadata:
       labels:
         {{- include "devops-platform.selectorLabels" . | nindent 8 }}
+
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+
       containers:
-        - name: devops-platform
+        - name: {{ include "devops-platform.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+
           ports:
             - name: http
               containerPort: {{ .Values.containerPort }}
               protocol: TCP
+
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
