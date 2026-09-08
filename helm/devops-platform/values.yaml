@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: ghcr.io/infobeans-vishalmene/devops-platform
-  tag: "latest"
+  tag: "041d09bf2e70ffa9e4ce17114ceac2ea4db068a7"
   pullPolicy: IfNotPresent
 
 service:
