@@ -40,12 +40,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trivy filesystem scan
-        uses: aquasecurity/trivy-action@0.33.1
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
           scan-ref: .
           severity: CRITICAL,HIGH
-          ignore-unfixed: true    
+          ignore-unfixed: true
 
       - name: Build Docker image
         working-directory: app
@@ -53,8 +53,8 @@ jobs:
           docker build -t demo-api:${{ github.sha }} .
 
       - name: Trivy container scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: demo-api:${{ github.sha }}
           severity: CRITICAL,HIGH
-          ignore-unfixed: true    
+          ignore-unfixed: true
