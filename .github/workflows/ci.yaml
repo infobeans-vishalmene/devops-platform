@@ -46,6 +46,12 @@ jobs:
           scan-ref: .
           severity: CRITICAL,HIGH
           ignore-unfixed: true
+          
+      - name: Checkov Terraform scan
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: terraform
+          skip_check: CKV_TF_1    
 
       - name: Build Docker image
         working-directory: app
