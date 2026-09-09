@@ -1,4 +1,5 @@
 aws_region = "ap-south-1"
+name       = "devops-platform-dev"
 
 availability_zones = [
   "ap-south-1a",
