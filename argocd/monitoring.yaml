@@ -12,6 +12,12 @@ spec:
     targetRevision: 78.5.0
     helm:
       releaseName: monitoring
+      values: |
+        crds:
+          enabled: true
+          upgradeJob:
+            enabled: true
+            forceConflicts: true
 
   destination:
     server: https://kubernetes.default.svc
