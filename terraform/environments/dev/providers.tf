@@ -1,6 +1,13 @@
 terraform {
   required_version = ">= 1.6.0"
 
+  backend "s3" {
+    bucket       = "devops-platform-terraform-state-vishalmene-2026"
+    key          = "dev/dev.tfstate"
+    region       = "ap-south-1"
+    use_lockfile = true
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
